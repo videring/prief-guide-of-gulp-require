@@ -1,0 +1,107 @@
+$color1:#aeaeae;
+.div1{
+    background-color:$color1;
+}
+
+/*# sourceMappingURL=test.css.map */
+#main {
+  $width: 5em !global;
+  width: $width;
+}
+#sidebar {
+  width: $width;
+}
+
+$left:left;
+.div1{
+    border-#{$left}-width:5px;
+}
+
+$left:20px;
+.div1{
+    margin-left:$left+12px;
+}
+
+p {
+  font: 15px + 20px/8px;             // Plain CSS, no division
+  $width: 1000px;
+  width: $width/2;            // Uses a variable, does division
+  width: round(1.5)/2;        // Uses a function, does division
+  height: (500px/2);          // Uses parentheses, does division
+  margin-left: 5px + 8px/2px; // Uses +, does division
+  font: (italic bold 10px/8px); // In a list, parentheses don't count
+}
+
+.div1 {
+  .span1{
+    height: 12px;
+  }
+  .div2 {
+    width:16px;
+  }
+}
+
+p{
+  border:{
+  
+	color: red;
+  }
+}
+
+.div1{
+ &:hover{
+  cursor:hand;
+ }
+}
+
+.class1{
+	font-size:19px;
+}
+
+.class2{
+ @extend .class1;
+ color:black;
+}
+
+.class1{
+ font-weight:bold;
+}
+
+@mixin common($value1,$value2,$defaultValue:12px){
+    display:block;
+    margin-left:$value1;
+    margin-right:$value2;
+    padding:$defaultValue;
+}
+.class11{
+    font-size:16px;
+    @include common(12px,13px,15px);
+}
+.class12{
+    font-size:16px;
+    @include common(12px,13px);
+}
+
+@mixin rounded($vert, $horz, $radius: 10px) {
+    border-#{$vert}-#{$horz}-radius: $radius;
+    -moz-border-radius-#{$vert}#{$horz}: $radius;
+    -webkit-border-#{$vert}-#{$horz}-radius: $radius;
+}
+
+#navbar li { @include rounded(top, left); }
+#footer { @include rounded(top, left, 5px); }
+
+$i: 6;
+  @while $i > 0 {
+    .item-#{$i} { width: 2em * $i; }
+    $i: $i - 2;
+  }
+@each $member in a, b, c, d {
+  .#{$member} {
+    background-image: url("/image/#{$member}.jpg");
+  }
+}
+
+.zou{
+  color:lighten(#cc3, 10%)
+}  
