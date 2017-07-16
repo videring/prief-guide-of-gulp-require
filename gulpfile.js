@@ -80,18 +80,12 @@ gulp.task( 'testCssmin', [ 'testHtmlmin' ], function () {
 });
 
 gulp.task( 'testConcat', [ 'testCssmin' ], function () {
-	gulp.src(['src/js/*.js', '!src/js/main.js'])
+	gulp.src('src/js/*.js')
 		.pipe(concat('all.js'))
 		.pipe(gulp.dest('dist/js'));
 	
 });
 
-gulp.task( 'testRequire', [ 'testConcat' ], function () {
-	gulp.src('src/js/lib/*.js') 
-		.pipe(amdOptimize('src/js/main')) //主入口文件 
-		//.pipe(concat('main-new.js')) //合并后的文件，如何合并后的文件和主入口名一样，构建后便只有一个文件 
-		.pipe(gulp.dest('dist/js')); //输出目录
-});
 
 
 
